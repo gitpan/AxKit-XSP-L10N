@@ -1,4 +1,4 @@
-# $Id: L10N.pm 484 2005-03-25 03:58:41Z claco $
+# $Id: L10N.pm 486 2005-03-26 23:02:06Z claco $
 package AxKit::XSP::L10N;
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use base 'Apache::AxKit::Language::XSP::TaglibHelper';
 use base 'Locale::Maketext';
 use Apache;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 $NS = 'http://today.icantfocus.com/CPAN/AxKit/XSP/L10N';
 
 @EXPORT_TAGLIB = (
@@ -44,12 +44,23 @@ sub _get_handle {
     eval "require $module";
 
     if (!$@) {
-        return $module->get_handle($lang);
+        return _to_utf8($module->get_handle($lang));
     } else {
         AxKit::Debug(5, "[L10N] $@");
 
         return undef;
     };
+};
+
+sub _to_utf8 {
+    my $value = shift;
+
+    if ($] >= 5.008) {
+        require utf8;
+        utf8::upgrade($value);
+    };
+
+    return $value;
 };
 
 1;
@@ -97,7 +108,7 @@ within XSP pages using C<Locale::Maketext>.
 
 =head2 <l10n:translate>
 
-Translates a given string value to the language of the users' browser,
+Translates a given string value to the language of the users browser,
 or to the language specified in the C<lang> attribute.
 
 The C<translate> tag has three options:
@@ -107,7 +118,7 @@ The C<translate> tag has three options:
 =item base
 
 If you need to use different sets of localization modules within the same
-page or sets of pages and C<AxL10NBase> is to strict, you can specify
+page or sets of pages and C<AxL10NBase> is too strict, you can specify
 the base module name to be loaded for each call to translate:
 
     PerlSetVar AxL10NBase MyModule::L10N;
@@ -117,6 +128,9 @@ the base module name to be loaded for each call to translate:
 
     <l10n:translate base="OtherModule::L10N" lang="en"/>
         # uses OtherModule::L10N::en
+
+If no C<base> or C<AxL10NBase> are specified, or the given C<base> or
+C<AxL10NBase> can't be loaded, the supplied C<value> will be returned.
 
 =item lang
 
@@ -137,9 +151,9 @@ attribute, or as a child tag.
 
     <l10n:translate>English</l10n:translate>
 
-Make sure to read the section on "AUTO LEXICONS" in L<Locale::Maketext>
+Make sure to read the section on "AUTO LEXICONS" in C<Locale::Maketext>
 for more information on the various methods and actions performed when no
-entry cna be found for C<value> or no suitable language modules can be found.
+entry can be found for C<value> or no suitable language modules can be found.
 
 =item param
 
@@ -167,9 +181,9 @@ The following configuration variables are available:
 
 =head2 AxL10NBase
 
-This sets the name of the base localzation module to use.
+This sets the name of the base localization module to use.
 See C<Locale::Maketext> for more information how to construct the base
-localization module and specific language modules.
+localization module and specific language module lexicons.
 
     AxL10NBase  MyPackage::L10N
 

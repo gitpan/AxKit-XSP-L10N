@@ -34,14 +34,14 @@ TAG HIERARCHY
 
 TAG REFERENCE
   <l10n:translate>
-    Translates a given string value to the language of the users' browser,
-    or to the language specified in the "lang" attribute.
+    Translates a given string value to the language of the users browser, or
+    to the language specified in the "lang" attribute.
 
     The "translate" tag has three options:
 
     base
         If you need to use different sets of localization modules within the
-        same page or sets of pages and "AxL10NBase" is to strict, you can
+        same page or sets of pages and "AxL10NBase" is too strict, you can
         specify the base module name to be loaded for each call to
         translate:
 
@@ -52,6 +52,9 @@ TAG REFERENCE
 
             <l10n:translate base="OtherModule::L10N" lang="en"/>
                 # uses OtherModule::L10N::en
+
+        If no "base" or "AxL10NBase" are specified, or the given "base" or
+        "AxL10NBase" can't be loaded, the supplied "value" will be returned.
 
     lang
         This specifies the target language to localize the string to. It can
@@ -70,10 +73,10 @@ TAG REFERENCE
 
             <l10n:translate>English</l10n:translate>
 
-        Make sure to read the section on "AUTO LEXICONS" in Locale::Maketext
-        for more information on the various methods and actions performed
-        when no entry cna be found for "value" or no suitable language
-        modules can be found.
+        Make sure to read the section on "AUTO LEXICONS" in
+        "Locale::Maketext" for more information on the various methods and
+        actions performed when no entry can be found for "value" or no
+        suitable language modules can be found.
 
     param
         These are values parameters to be used in "Locale::Maketext"s
@@ -98,9 +101,9 @@ CONFIGURATION
     The following configuration variables are available:
 
   AxL10NBase
-    This sets the name of the base localzation module to use. See
+    This sets the name of the base localization module to use. See
     "Locale::Maketext" for more information how to construct the base
-    localization module and specific language modules.
+    localization module and specific language module lexicons.
 
         AxL10NBase  MyPackage::L10N
 

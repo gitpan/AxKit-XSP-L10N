@@ -1,4 +1,4 @@
-# $Id: en_us.pm 484 2005-03-25 03:58:41Z claco $
+# $Id: en_us.pm 486 2005-03-26 23:02:06Z claco $
 package AxKit::XSP::L10N::Demo::en_us;
 use strict;
 use warnings;
@@ -17,7 +17,18 @@ __END__
 
 =head1 NAME
 
-AxKit::XSP::L10N Demo English Lexicon
+AxKit::XSP::L10N::Demo::en_us - Demo English Lexicon
+
+=head1 SYNOPSIS
+
+    use base 'AxKit::XSP::L10N::Demo';
+
+    my $lh = __PACKAGE->get_handle('fr');
+    $lh->maketext('Submit');
+
+=head1 DESCRIPTION
+
+Simple demo French lexicon.
 
 =head1 AUTHOR
 

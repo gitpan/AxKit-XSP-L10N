@@ -1,5 +1,10 @@
-$Id: Changes 484 2005-03-25 03:58:41Z claco $
+$Id: Changes 487 2005-03-26 23:03:15Z claco $
 Revision history for Perl module AxKit::XSP::L10N
+
+0.02 Sat Mar 26 17:43:28 2005
+    - Pod cleanup
+    - Added no_index in hopes of fixing the 0.01 CPAN index results
+    - Added utf8 fixup code for perl > 5.8.0
 
 0.01 Thur Mar 24 23:37:13 2005
     - Initial release

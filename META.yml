@@ -2,18 +2,21 @@
 name: AxKit-XSP-L10N
 abstract: String localization (L10N) taglib for AxKit
 author: Christopher H. Laco <claco@chrislaco.com>
-version: 0.01
+version: 0.02
 version_from: lib\AxKit\XSP\L10N.pm
 installdirs: site
 license: perl
 requires:
   AxKit: 1.61
   Locale::Maketext: 1.08
-  mod_perl: 0
-recommends:
+  mod_perl: < 2.0
+build_requires:
   Pod::Coverage: 0.14
   Test::Pod: 1.00
   Test::Pod::Coverage: 1.04
   Test:Strict: 0.05
 distribution_type: module
+no_index:
+  namespace:
+  - AxKit::XSP::L10N::Demo
 generated_by: ExtUtils::MakeMaker version 6.17

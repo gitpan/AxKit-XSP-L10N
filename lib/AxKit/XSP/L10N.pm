@@ -1,4 +1,4 @@
-# $Id: L10N.pm 486 2005-03-26 23:02:06Z claco $
+# $Id: L10N.pm 489 2005-03-27 00:11:52Z claco $
 package AxKit::XSP::L10N;
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use base 'Apache::AxKit::Language::XSP::TaglibHelper';
 use base 'Locale::Maketext';
 use Apache;
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 $NS = 'http://today.icantfocus.com/CPAN/AxKit/XSP/L10N';
 
 @EXPORT_TAGLIB = (

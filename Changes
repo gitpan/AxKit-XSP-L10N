@@ -1,5 +1,8 @@
-$Id: Changes 487 2005-03-26 23:03:15Z claco $
+$Id: Changes 489 2005-03-27 00:11:52Z claco $
 Revision history for Perl module AxKit::XSP::L10N
+
+0.03 Sat Mar 26 19:09:13 2005
+    - Just messing with META.yml. Nothing so see here.
 
 0.02 Sat Mar 26 17:43:28 2005
     - Pod cleanup

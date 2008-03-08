@@ -1,7 +1,23 @@
-# $Id: Makefile.PL 484 2005-03-25 03:58:41Z claco $
-use ExtUtils::MakeMaker;
+# $Id: /local/CPAN/AxKit-XSP-L10N/Makefile.PL 1402 2008-03-08T20:28:41.664717Z claco  $
 use strict;
-use warnings FATAL => 'all';
+use warnings;
+use inc::Module::Install 0.65;
+
+name 'AxKit-XSP-L10N';
+license 'artistic';
+perl_version '5.008000';
+all_from 'lib/AxKit/XSP/L10N.pm';
+
+requires 'AxKit'             => 1.61;
+requires 'Locale::Maketext'  => 1.08;
+requires 'mod_perl';
+
+tests 't/*.t';
+clean_files 'smoke-report-* t/TEST t/SMOKE t/logs';
+
+eval {
+    system 'pod2text lib/AxKit/XSP/L10N.pm > README';
+};
 
 eval 'use Apache::Test 1.16';
 if (!$@) {
@@ -20,22 +36,5 @@ if (!$@) {
     Apache::TestMM::generate_script('t/SMOKE');
 };
 
-WriteMakefile(
-    NAME            =>  'AxKit::XSP::L10N',
-    VERSION_FROM    =>  'lib/AxKit/XSP/L10N.pm',
-    ABSTRACT        =>  'String localization (L10N) taglib for AxKit',
-    ($] >= 5.005 ?
-        (AUTHOR     =>  'Christopher H. Laco <claco@chrislaco.com>') : ()),
-    PREREQ_PM       =>  {
-        'AxKit'             => 1.61,
-        'Locale::Maketext'  => 1.08,
-        'mod_perl'          => undef
-    },
-    (ExtUtils::MakeMaker->VERSION >= 6.11) ?
-    (NO_META      => 1) : (),
-
-    dist => {
-        PREOP => 'pod2text lib/AxKit/XSP/L10N.pm > $(DISTVNAME)/README',
-    },
-    clean => { FILES => 'smoke-report-* t/TEST t/SMOKE t/logs' }
-);
+auto_install;
+WriteAll;

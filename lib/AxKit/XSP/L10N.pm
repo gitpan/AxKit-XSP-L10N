@@ -1,4 +1,4 @@
-# $Id: L10N.pm 1431 2006-09-25 22:38:21Z claco $
+# $Id: /local/CPAN/AxKit-XSP-L10N/lib/AxKit/XSP/L10N.pm 1402 2008-03-08T20:28:41.664717Z claco  $
 package AxKit::XSP::L10N;
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use base 'Apache::AxKit::Language::XSP::TaglibHelper';
 use base 'Locale::Maketext';
 use Apache;
 
-$VERSION = '0.04';
+$VERSION = '0.05000';
 $NS = 'http://today.icantfocus.com/CPAN/AxKit/XSP/L10N';
 
 @EXPORT_TAGLIB = (
@@ -26,7 +26,7 @@ sub translate {
     if ($lh) {
         AxKit::Debug(5, "[L10N] loaded language handle " . ref $lh);
 
-        return $lh->maketext($value, @{$params});
+        return _to_utf8($lh->maketext($value, @{$params}));
     } else {
         return $value;
     };
@@ -44,7 +44,7 @@ sub _get_handle {
     eval "require $module";
 
     if (!$@) {
-        return _to_utf8($module->get_handle($lang));
+        return $module->get_handle($lang);
     } else {
         AxKit::Debug(5, "[L10N] $@");
 

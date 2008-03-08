@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Id: translate_params.xsp 484 2005-03-25 03:58:41Z claco $ -->
+<!-- $Id: /local/CPAN/AxKit-XSP-L10N/t/htdocs/axkit/translate_params.xsp 1396 2005-03-25T03:58:41.995755Z claco  $ -->
 <xsp:page xmlns:xsp="http://apache.org/xsp/core/v1"
 	xmlns:l10n="http://today.icantfocus.com/CPAN/AxKit/XSP/L10N"
 >

@@ -1,4 +1,4 @@
-# $Id: TestHelper.pm 484 2005-03-25 03:58:41Z claco $
+# $Id: /local/CPAN/AxKit-XSP-L10N/t/lib/TestHelper.pm 1396 2005-03-25T03:58:41.995755Z claco  $
 package TestHelper;
 use strict;
 use warnings;

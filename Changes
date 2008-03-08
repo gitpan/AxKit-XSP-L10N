@@ -1,5 +1,10 @@
-$Id: Changes 1431 2006-09-25 22:38:21Z claco $
+$Id: /local/CPAN/AxKit-XSP-L10N/Changes 1402 2008-03-08T20:28:41.664717Z claco  $
 Revision history for Perl module AxKit::XSP::L10N
+
+0.05000 Sat Mar 8 14:24:37 2008
+    - Convert to Module::Install
+    - Make META/CPANTS happy
+    - Fixed maketext bug
 
 0.04 Mon Sep 25 18:48:27 2006
     - Fixed META.yml to make CPANTS happy

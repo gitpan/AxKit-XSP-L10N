@@ -1,4 +1,4 @@
-# $Id: en_us.pm 486 2005-03-26 23:02:06Z claco $
+# $Id: /local/CPAN/AxKit-XSP-L10N/lib/AxKit/XSP/L10N/Demo/en_us.pm 1397 2005-03-26T23:02:06.504192Z claco  $
 package AxKit::XSP::L10N::Demo::en_us;
 use strict;
 use warnings;
